@@ -11,9 +11,9 @@ export function validateCreate(name,price){
     }
 }
 
-export function createProduct(name,price,description,amount){
+export async function createProduct(name,price,description,amount){
 
-    databases.createDocument(
+    await databases.createDocument(
         '65fb6b7219e917560ef9',
         '65fb6b84cd7071d2ba09',
         ID.unique(),
@@ -25,7 +25,7 @@ export function createProduct(name,price,description,amount){
             amount : amount,
             sold : 0
         }
-    ).then(()=>{return true})
+    ).then((data)=>{console.log(data);return true})
     .catch((e)=>{console.log(e);return false})
 }
 //crear nueva imagen para un producto

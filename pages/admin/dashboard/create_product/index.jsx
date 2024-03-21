@@ -18,7 +18,7 @@ export default function CreateProduct(){
         if(validateCreate(name,price)){
             setError('')
             if(createProduct(name,price,description,amount)){
-                console.log('Creado con exito')
+               console.log('Creado con exito')
             }else{
                 console.log('ocurrio un error')
             }
