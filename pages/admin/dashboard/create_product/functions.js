@@ -1,7 +1,8 @@
 import { ID } from "appwrite";
 
-import { databases } from "@/services/appwrite/appwrite";
+import { databases, storage } from "@/services/appwrite/appwrite";
 
+//valida los inputs , si retorna true continua la creacion del nuevo producto
 export function validateCreate(name,price){
     if(name.length>5 && price > 0){
         return true
@@ -26,4 +27,14 @@ export function createProduct(name,price,description,amount){
         }
     ).then(()=>{return true})
     .catch((e)=>{console.log(e);return false})
+}
+//crear nueva imagen para un producto
+export function createImage(file){
+    storage.createFile(
+        '65fcb5107e85fde0e5e3',
+        ID.unique(),
+        file
+    )
+    .then((data)=>{console.log(data)})
+    .catch((e)=>{console.log(e)})
 }
