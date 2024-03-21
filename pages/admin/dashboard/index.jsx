@@ -5,6 +5,7 @@ import Modal from "@/components/Modal";
 import FormCreate from "@/components/FormCreate";
 import UpdateModal from "@/components/UpdateModal";
 import { useState } from "react";
+import { getProducts } from "./functions";
 
 export default function Dashboard(){
 
@@ -16,6 +17,8 @@ export default function Dashboard(){
         description : 'descripcion',
         amount : 1
     }
+
+    getProducts()
 
     return(
         <div className="relative">
