@@ -1,8 +1,11 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import { validateCreate,createProduct } from "./functions"
+import { useRouter } from "next/navigation"
 
 export default function CreateProduct(){
+
+    const router = useRouter()
 
     const[name,setName] = useState('')
     const[price,setPrice] = useState(0)
@@ -14,11 +17,21 @@ export default function CreateProduct(){
     function handleCreate(){
         if(validateCreate(name,price)){
             setError('')
-            createProduct(name,price,description,amount)
+            if(createProduct(name,price,description,amount)){
+                console.log('Creado con exito')
+            }else{
+                console.log('ocurrio un error')
+            }
         }else{
             setError('el nombre debe ser mayor a 5 caracteres y el precio mayor a 0')
         }
     }
+
+    useEffect(()=>{
+        if(!localStorage.getItem('id') || !localStorage.getItem('id').length>0){
+            router.push('/access/login')
+        }
+    })
 
     return(
         <main>

@@ -20,7 +20,7 @@ export default function Dashboard(){
     return(
         <div className="relative">
             <UpdateModal show={updateModal} setShow={()=>{setUpdateModal(false)}} update={()=>{print('update')}} data={data}/>
-            <button>Crear</button>
+            <a className="border-2 py-2 px-5 bg-green-400" href="/admin/dashboard/create_product">Crear</a>
             <Table openModal={setUpdateModal}/>
         </div>
     )
