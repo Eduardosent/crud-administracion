@@ -8,24 +8,24 @@ export default function Login(){
 
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
+    const [error, setError] = useState(false)
 
     async function Login(email,password){
-        const promise = await account.createEmailPasswordSession(email,password);
-        console.log(promise)
+        if(email!=''&& password!=''){
+            await account.createEmailPasswordSession(email,password)
+            .then(data=>console.log(data))
+            .catch(e=>console.log(e))
+        }
     }
-
-    console.log(email)
-    console.log(password)
     return(
         <main>
             <GridContainer>
-                <AccountContext>
-                <div className="flex flex-col gap-4 border-2 rounded-md w-[80%]">
-                    <input className="mx-10 border-2 rounded-md" style={{color:'red'}} onChange={(e)=>setEmail(e.target.value)} type="email" name="" id="" value={email} placeholder="Email"/>
-                    <input className="mx-10 border-2 rounded-md" style={{color:'red'}} onChange={(e)=>setPassword(e.target.value)} type="password" name="" id="" value={password} placeholder="Contraseña"/>
-                    <button onClick={()=>Login(email,password)}>Log In </button>
+                <div className="flex flex-col gap-4 border-2 rounded-md w-[80%] pt-4">
+                    <h1 className="text-center text-xl">Log In</h1>
+                    <input className="mx-10 border-2 rounded-md py-2" style={{color:'red'}} onChange={(e)=>setEmail(e.target.value)} type="email" name="" id="" value={email} placeholder="Email"/>
+                    <input className="mx-10 border-2 rounded-md py-2" style={{color:'red'}} onChange={(e)=>setPassword(e.target.value)} type="password" name="" id="" value={password} placeholder="Contraseña"/>
+                    <button className="p-2 bg-green-400 text-white font-semibold" onClick={()=>Login(email,password)}>Log In </button>
                 </div>
-                </AccountContext>
             </GridContainer>
         </main>
     )
