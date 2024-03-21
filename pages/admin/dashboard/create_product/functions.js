@@ -12,20 +12,12 @@ export function validateCreate(name,price){
 
 export function createProduct(name,price,description,amount){
 
-    var obj = 
-    {
-        name: name,
-        price: price,
-        description : description,
-        amount : amount,
-        sold : 0
-    }
-    console.log(obj)
     databases.createDocument(
         '65fb6b7219e917560ef9',
         '65fb6b84cd7071d2ba09',
         ID.unique(),
         {
+            userId : localStorage.getItem('id'),
             name: name,
             price: price,
             description : description,

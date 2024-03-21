@@ -3,8 +3,11 @@ import { account } from "@/services/appwrite/appwrite";
 
 import GridContainer from "@/components/GridContainer";
 import AccountContext, { Account } from "@/context/appwrite/account";
+import { redirect, useRouter } from "next/navigation";
 
 export default function Login(){
+
+    const router = useRouter();
 
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
@@ -13,7 +16,12 @@ export default function Login(){
     async function Login(email,password){
         if(email!=''&& password!=''){
             await account.createEmailPasswordSession(email,password)
-            .then(data=>console.log(data))
+            .then((data)=>{
+                console.log(data)
+                localStorage.setItem('id',data.$id)
+                localStorage.setItem('email',data.providerUid)
+                router.push('/admin/dashboard')
+            })
             .catch(e=>console.log(e))
         }
     }
