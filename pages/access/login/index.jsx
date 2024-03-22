@@ -14,8 +14,8 @@ export default function Login(){
     const [error, setError] = useState(false)
 
     async function Login(email,password){
-        if(email!=''&& password!=''){
-            await account.createEmailPasswordSession(email,password)
+        if(email!='' && password!=''){
+            await account.createEmailSession(email,password)
             .then((data)=>{
                 console.log(data)
                 localStorage.setItem('id',data.$id)
@@ -32,7 +32,7 @@ export default function Login(){
                     <h1 className="text-center text-xl">Log In</h1>
                     <input className="mx-10 border-2 rounded-md py-2" style={{color:'red'}} onChange={(e)=>setEmail(e.target.value)} type="email" name="" id="" value={email} placeholder="Email"/>
                     <input className="mx-10 border-2 rounded-md py-2" style={{color:'red'}} onChange={(e)=>setPassword(e.target.value)} type="password" name="" id="" value={password} placeholder="Contraseña"/>
-                    <button className="p-2 bg-green-400 text-white font-semibold" onClick={()=>Login(email,password)}>Log In </button>
+                    <button className="p-2 bg-green-400 text-white font-semibold" onClick={()=> Login(email,password)}>Log In </button>
                 </div>
             </GridContainer>
         </main>
