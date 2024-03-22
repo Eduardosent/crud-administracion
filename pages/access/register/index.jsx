@@ -1,4 +1,12 @@
+import {useState} from "react";
+
 export default function Register() {
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+
+
     return (
         <section className="h-screen flex items-center justify-center">
             <div className="bg-white relative items-center w-3/5 px-5 py-12 mx-auto md:px-12 lg:px-20 max-w-7xl border-solid border-2 border-black">
@@ -13,12 +21,14 @@ export default function Register() {
                             <div className="col-span-full">
                                 <label className="block mb-3 text-sm font-medium text-gray-600"> Email </label>
                                 <input type="password" placeholder="correo@correo.com"
-                                       className="block w-full px-6 py-3 text-black bg-white border border-gray-200 rounded-full appearance-none placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"/>
+                                       className="block w-full px-6 py-3 text-black bg-white border border-gray-200 rounded-full appearance-none placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
+                                       onChange={e => setEmail(e.target.value)}/>
                             </div>
                             <div className="col-span-full">
                                 <label className="block mb-3 text-sm font-medium text-gray-600"> Contraseña </label>
                                 <input type="password" placeholder="******"
-                                       className="block w-full px-6 py-3 text-black bg-white border border-gray-200 rounded-full appearance-none placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"/>
+                                       className="block w-full px-6 py-3 text-black bg-white border border-gray-200 rounded-full appearance-none placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
+                                       onChange={e => setPassword(e.target.value)}/>
                             </div>
 
                             <div className="col-span-full">
