@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
     <main>
-      <a href="/admin">Admin</a>
+      <a href="/admin">Pagina principal index</a>
     </main>
   );
 }
