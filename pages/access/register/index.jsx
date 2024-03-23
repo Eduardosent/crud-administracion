@@ -1,5 +1,5 @@
-import {useState} from "react";
-import createAccount from "@/pages/access/register/functions";
+import { useState } from "react";
+import { createAccount, createVerification } from "@/pages/access/register/functions";
 
 export default function Register() {
 
@@ -11,7 +11,6 @@ export default function Register() {
 
         if (email != '' && password != '') {
             createAccount(email, password)
-            console.log(email, password)
         } else {
             Console.log('hay al menos un campo vacio')
         }
