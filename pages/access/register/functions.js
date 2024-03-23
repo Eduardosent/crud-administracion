@@ -1,5 +1,5 @@
-import {account} from "@/services/appwrite/appwrite";
-import {ID} from 'appwrite'
+import { account } from "@/services/appwrite/appwrite";
+import { ID } from 'appwrite'
 
 export default function createAccount(email, password) {
     const promise = account.create(ID.unique(), email, password)

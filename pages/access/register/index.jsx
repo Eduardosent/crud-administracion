@@ -1,11 +1,21 @@
 import {useState} from "react";
+import createAccount from "@/pages/access/register/functions";
 
 export default function Register() {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
+    const handleSubmit = (e) =>  {
+        e.preventDefault()
 
+        if (email != '' && password != '') {
+            createAccount(email, password)
+            console.log(email, password)
+        } else {
+            Console.log('hay al menos un campo vacio')
+        }
+    }
 
     return (
         <section className="h-screen flex items-center justify-center">
@@ -16,11 +26,11 @@ export default function Register() {
                             <h2 className="text-4xl text-black">Registro</h2>
                         </div>
                     </div>
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <div className="mt-4 space-y-6">
                             <div className="col-span-full">
                                 <label className="block mb-3 text-sm font-medium text-gray-600"> Email </label>
-                                <input type="password" placeholder="correo@correo.com"
+                                <input type="email" placeholder="correo@correo.com"
                                        className="block w-full px-6 py-3 text-black bg-white border border-gray-200 rounded-full appearance-none placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
                                        onChange={e => setEmail(e.target.value)}/>
                             </div>
