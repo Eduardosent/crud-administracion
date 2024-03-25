@@ -14,8 +14,8 @@ export function validateCreate(name,price){
 export async function createProduct(name,price,description,amount){
 
     await databases.createDocument(
-        '65fb6b7219e917560ef9',
-        '65fb6b84cd7071d2ba09',
+        process.env.NEXT_PUBLIC_DB_ID,
+        process.env.NEXT_PUBLIC_COLLECTION_ID,
         ID.unique(),
         {
             userId : localStorage.getItem('id'),

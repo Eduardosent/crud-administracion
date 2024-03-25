@@ -7,19 +7,20 @@ import FormCreate from "@/components/FormCreate";
 import UpdateModal from "@/components/UpdateModal";
 import { useEffect, useState } from "react";
 import { getProducts } from "./functions";
+import DeleteModal from "@/components/DeleteModal";
 
 export default function Dashboard(){
 
     const[updateModal,setUpdateModal] = useState(false)
+    const[deleteModal,setDeleteModal] = useState(false)
+    const[data,setData] = useState({
+        name : '',
+        price : 0,
+        description : '',
+        amount : 0
+    })
     const[products,setProducts] = useState([])
     const[results,setResult] = useState([])
-
-    var data = {
-        name : 'Licuadora',
-        price : 0.5,
-        description : 'descripcion',
-        amount : 1
-    }
 
     async function gettingProducts(){
         const products = await getProducts();
@@ -38,13 +39,14 @@ export default function Dashboard(){
 
     useEffect(()=>{
         gettingProducts()
-    },[])
+    },[updateModal,deleteModal])
 
     return(
         <div className="relative">
 
-            <UpdateModal show={updateModal} setShow={()=>{setUpdateModal(false)}} update={()=>{print('update')}} data={data}/>
-            <div className="flex flex-row justify-between m-4 items-center">
+            <UpdateModal show={updateModal} setShow={()=>{setUpdateModal(false)}} data={data}/>
+            <DeleteModal show={deleteModal} setShow={setDeleteModal} data={data}/>
+            <div className="flex flex-row justify-between p-4 items-center">
                 <div className="relative">
                     <HiMagnifyingGlassCircle className="absolute" size={40} color="blue" style={{top:"-5px",left:"-15px"}}/>
                 <input className="border-2 rounded-lg px-5" type="search" name="" id="" onChange={(e)=>finder(e.target.value)}/>
@@ -89,8 +91,9 @@ export default function Dashboard(){
                     <td class="px-6 py-4">
                         {product.description}
                     </td>
-                    <td class="px-6 py-4">
-                        <button onClick={()=>setUpdateModal(true)}>Edit</button>
+                    <td class="px-6 py-4 flex gap-2">
+                        <button className="text-blue-400" onClick={()=>{setUpdateModal(true);setData(product);}}>Edit</button>
+                        <button className="text-red-400" onClick={()=>{setDeleteModal(true);setData(product);}}>Delete</button>
                     </td>
                 </tr>
                 ))
