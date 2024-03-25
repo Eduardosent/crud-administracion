@@ -4,7 +4,7 @@ const client = new Client();
 
 client
     .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('65fb1b72d8f5ddc566e6')
+    .setProject(process.env.NEXT_PUBLIC_PROJECT_ID)
     .setLocale('es-mx');
 
 const account = new Account(client);
