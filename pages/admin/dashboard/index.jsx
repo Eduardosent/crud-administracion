@@ -1,13 +1,8 @@
-import { IoMdAdd } from "react-icons/io";
 import { HiMagnifyingGlassCircle } from "react-icons/hi2";
 
-import Table from "@/components/Table";
-import Modal from "@/components/Modal";
-import FormCreate from "@/components/FormCreate";
 import UpdateModal from "@/components/UpdateModal";
 import { useEffect, useState } from "react";
 import {confirmAccount, getProducts} from "./functions";
-import { getProducts } from "./functions";
 import DeleteModal from "@/components/DeleteModal";
 
 export default function Dashboard(){
@@ -60,23 +55,23 @@ export default function Dashboard(){
                 </div>
             <a className="border-2 py-2 px-5 bg-green-400" href="/admin/dashboard/create_product">Crear</a>
             </div>
-            <div class="relative overflow-x-auto m-4 rounded-md">
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 rounded-md">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <div className="relative overflow-x-auto m-4 rounded-md">
+    <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 rounded-md">
+        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" className="px-6 py-3">
                     Imagen
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" className="px-6 py-3">
                     Nombre
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" className="px-6 py-3">
                     Precio
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" className="px-6 py-3">
                     Descripción
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" className="px-6 py-3">
                     Acciones
                 </th>
             </tr>
@@ -85,20 +80,20 @@ export default function Dashboard(){
             {
                 products.length>0 &&
                 results.map((product,i)=>(
-                    <tr key={i} class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <tr key={i} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         Imagen
                     </th>
-                    <td class="px-6 py-4">
+                    <td className="px-6 py-4">
                         {product.name}
                     </td>
-                    <td class="px-6 py-4">
+                    <td className="px-6 py-4">
                         {product.price}
                     </td>
-                    <td class="px-6 py-4">
+                    <td className="px-6 py-4">
                         {product.description}
                     </td>
-                    <td class="px-6 py-4 flex gap-2">
+                    <td className="px-6 py-4 flex gap-2">
                         <button className="text-blue-400" onClick={()=>{setUpdateModal(true);setData(product);}}>Edit</button>
                         <button className="text-red-400" onClick={()=>{setDeleteModal(true);setData(product);}}>Delete</button>
                     </td>
