@@ -4,6 +4,7 @@ import { account } from "@/services/appwrite/appwrite";
 import GridContainer from "@/components/GridContainer";
 import AccountContext, { Account } from "@/context/appwrite/account";
 import { redirect, useRouter } from "next/navigation";
+import {createVerification} from "@/pages/access/register/functions";
 
 export default function Login(){
 
