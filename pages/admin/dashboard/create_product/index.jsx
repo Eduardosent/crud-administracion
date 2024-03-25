@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 
 import { validateCreate,createProduct } from "./functions"
 import { useRouter } from "next/navigation"
+import { protectPage } from "@/functions/protect"
 
 export default function CreateProduct(){
 
@@ -28,10 +29,8 @@ export default function CreateProduct(){
     }
 
     useEffect(()=>{
-        if(!localStorage.getItem('id') || !localStorage.getItem('id').length>0){
-            router.push('/access/login')
-        }
-    })
+        protectPage()
+    },[])
 
     return(
         <main>

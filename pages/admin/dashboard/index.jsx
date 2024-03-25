@@ -4,6 +4,7 @@ import UpdateModal from "@/components/UpdateModal";
 import { useEffect, useState } from "react";
 import {confirmAccount, getProducts} from "./functions";
 import DeleteModal from "@/components/DeleteModal";
+import { protectPage } from "@/functions/protect";
 
 export default function Dashboard(){
 
@@ -39,6 +40,7 @@ export default function Dashboard(){
     }
 
     useEffect(()=>{
+        protectPage()
         gettingProducts()
     },[updateModal,deleteModal])
 

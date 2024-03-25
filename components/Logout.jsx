@@ -1,3 +1,5 @@
+import { logout } from "@/functions/appwrite";
+
 export default function Logout({show,setShow}){
 
     return(
@@ -6,7 +8,7 @@ export default function Logout({show,setShow}){
                 <p className="text-center text-md font-semibold p-4">Esta seguro que desea Cerrar Sesión ?</p>
                 <div className="flex flex-row justify-center gap-10 p-4">
                     <button className="py-2 px-3 bg-red-500 text-white rounded-md" onClick={()=>setShow(false)}>Cancelar</button>
-                    <button className="py-2 px-3 bg-green-500 text-white rounded-md">Cerrar Sesión</button>
+                    <button className="py-2 px-3 bg-green-500 text-white rounded-md" onClick={logout}>Confirmar</button>
                 </div>
             </div>
         </div>
