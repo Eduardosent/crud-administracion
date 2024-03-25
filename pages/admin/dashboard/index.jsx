@@ -24,13 +24,6 @@ export default function Dashboard(){
     const[results,setResult] = useState([])
     const[email, setEmail] = useState('')
 
-    var data = {
-        name : 'Licuadora',
-        price : 0.5,
-        description : 'descripcion',
-        amount : 1
-    }
-
     async function gettingProducts(){
         const products = await getProducts();
         setProducts(products)
