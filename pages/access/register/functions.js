@@ -12,7 +12,7 @@ import { ID } from 'appwrite'
 }
 
     function createVerification() {
-        const promise = account.createVerification('')
+        const promise = account.createVerification('http://localhost:3000/verification')
 
         promise.then(function (response) {
             console.log(response); // Success

@@ -6,13 +6,14 @@ import Modal from "@/components/Modal";
 import FormCreate from "@/components/FormCreate";
 import UpdateModal from "@/components/UpdateModal";
 import { useEffect, useState } from "react";
-import { getProducts } from "./functions";
+import {confirmAccount, getProducts} from "./functions";
 
 export default function Dashboard(){
 
     const[updateModal,setUpdateModal] = useState(false)
     const[products,setProducts] = useState([])
     const[results,setResult] = useState([])
+    const[email, setEmail] = useState('')
 
     var data = {
         name : 'Licuadora',
@@ -36,6 +37,10 @@ export default function Dashboard(){
         }
     }
 
+    function Account() {
+        confirmAccount(email)
+    }
+
     useEffect(()=>{
         gettingProducts()
     },[])
@@ -48,6 +53,7 @@ export default function Dashboard(){
                 <div className="relative">
                     <HiMagnifyingGlassCircle className="absolute" size={40} color="blue" style={{top:"-5px",left:"-15px"}}/>
                 <input className="border-2 rounded-lg px-5" type="search" name="" id="" onChange={(e)=>finder(e.target.value)}/>
+                    <input onClick={Account} onChange={e => setEmail(e.target.value)} value={email} className="pl-5 pr-5 border-2 border-black"></input>
                 </div>
             <a className="border-2 py-2 px-5 bg-green-400" href="/admin/dashboard/create_product">Crear</a>
             </div>

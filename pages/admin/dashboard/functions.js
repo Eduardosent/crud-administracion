@@ -1,5 +1,5 @@
-import { databases } from "@/services/appwrite/appwrite";
-import { Query } from "appwrite";
+import {account, databases} from "@/services/appwrite/appwrite";
+import { Query, ID } from "appwrite";
 
 export async function getProducts(){
     const promise = await databases.listDocuments(
@@ -14,4 +14,14 @@ export async function getProducts(){
     }else{
         return null
     }
+}
+
+export function confirmAccount(email) {
+    const promise = account.createMagicURLSession(ID.unique(), email)
+
+    promise.then(function (response) {
+        console.log(response); // Success
+    }, function (error) {
+        console.log(error); // Failure
+    });
 }
