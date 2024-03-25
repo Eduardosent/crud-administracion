@@ -1,4 +1,5 @@
 import { databases } from "@/services/appwrite/appwrite";
+import { useRouter } from "next/navigation";
 
 export async function updateProduct(id,name,price,description,amount){
 
@@ -26,4 +27,11 @@ export async function deleteProduct(id){
         id
     ).then((data)=>{console.log(data);return true})
     .catch((e)=>{console.log(e);return false})
+}
+
+export function logout(){
+    const router = useRouter()
+    localStorage.setItem('email','')
+    localStorage.setItem('id','')
+    router.push('/access/login')
 }
