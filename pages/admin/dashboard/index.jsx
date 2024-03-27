@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import {confirmAccount, getProducts} from "./functions";
 import DeleteModal from "@/components/DeleteModal";
 import { protectPage } from "@/functions/protect";
+import Image from "next/image";
+import userImage from "@/public/Foto-ejemplo.jpg"
 
 export default function Dashboard(){
 
@@ -50,10 +52,16 @@ export default function Dashboard(){
             <UpdateModal show={updateModal} setShow={()=>{setUpdateModal(false)}} data={data}/>
             <DeleteModal show={deleteModal} setShow={setDeleteModal} data={data}/>
             <div className="flex flex-row justify-between p-4 items-center">
+
+                <Image
+                    src={userImage}
+                    width={100}
+                    height={100}
+                    className="rounded-lg"
+                />
                 <div className="relative">
                     <HiMagnifyingGlassCircle className="absolute" size={40} color="blue" style={{top:"-5px",left:"-15px"}}/>
                 <input className="border-2 rounded-lg px-5" type="search" name="" id="" onChange={(e)=>finder(e.target.value)}/>
-                    <input onClick={Account} onChange={e => setEmail(e.target.value)} value={email} className="pl-5 pr-5 border-2 border-black"></input>
                 </div>
             <a className="border-2 py-2 px-5 bg-green-400" href="/admin/dashboard/create_product">Crear</a>
             </div>
