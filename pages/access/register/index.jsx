@@ -11,8 +11,9 @@ export default function Register() {
 
         if (email != '' && password != '') {
             createAccount(email, password)
+            createVerification()
         } else {
-            Console.log('hay al menos un campo vacio')
+            console.log('hay al menos un campo vacio')
         }
     }
 
